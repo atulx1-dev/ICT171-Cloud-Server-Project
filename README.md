@@ -9,7 +9,7 @@ Iron Forge Gym is a modern, responsive cloud-hosted web platform deployed on **M
 * **Assignment:** Assignment 3 — Cloud Server Project & Video Explainer
 
 ### 📹 Video Explainer
-* **Walkthrough Video:** *[Insert Your Video Link Here]*
+* **Walkthrough Video:** *https://drive.google.com/file/d/1qpCcRyWN8yJG0oeiPbusvKpCC4E5Zsq5/view?usp=sharing*
 
 ### ☁️ Cloud Deployment Details
 * **Cloud Provider:** Microsoft Azure
