@@ -41,3 +41,36 @@ Before starting, ensure you have:
     A registered Domain Name (from Namecheap, Cloudflare, GoDaddy, or AWS Route 53).
 
     An SSH client (Terminal on Mac/Linux, or PowerShell/PuTTY on Windows).
+
+    [ User Request ] 
+       │
+       ▼
+ [ Domain / DNS ] ──(Ports 80 & 443)──► [ AWS Security Group ]
+                                              │
+                                              ▼
+                                   [ EC2 Instance (Elastic IP) ]
+                                              │
+                                     ┌────────┴────────┐
+                                     ▼                 ▼
+                              [ Apache Server ]  [ MySQL DB ]
+                                     │
+                                     ▼
+                              [ WordPress Core ]
+
+
+Phase 1: AWS EC2 Instance & Networking Setup
+
+In this section, we launch an EC2 virtual machine running Ubuntu 24.04 LTS and attach an Elastic IP address to ensure your server maintains a static IP address across reboots.
+Step 1.1: Launching the EC2 Instance
+
+    Log in to your AWS Management Console and navigate to the EC2 Dashboard.
+
+    Click Launch Instance.
+
+    Set the instance details:
+
+        Name: WordPress-Web-Server
+
+        Application and OS Images (AMI): Select Ubuntu, then choose Ubuntu Server 24.04 LTS (64-bit).
+
+        Instance Type: Select t2.micro or t3.micro (Free tier eligible).
