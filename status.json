@@ -1,0 +1,10 @@
+{
+  "status": "online",
+  "server": "Iron Forge Gym VM",
+  "timestamp_utc": "2026-07-23T14:31:04Z",
+  "uptime": "up 4 weeks, 4 days, 12 hours, 7 minutes",
+  "cpu_load_percent": "0%",
+  "ram_usage": "48.11%",
+  "disk_usage": "10%",
+  "active_connections": 3
+}
