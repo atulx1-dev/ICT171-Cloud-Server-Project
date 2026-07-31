@@ -17,9 +17,10 @@ Iron Forge Gym is a modern, responsive cloud-hosted web platform deployed on **M
 * **VM Name:** IronForge-VM
 * **OS:** Ubuntu Server 24.04 LTS
 * **Web Server:** nginx
-* **Live Web URL:** *[Insert Your Domain / DNS Link Here — leave as http://74.162.66.196 if no domain yet]*
+* **Live Web URL: *https://ironforge.website/*
 * **Server Public IP:** `74.162.66.196`
-* **SSH Remote User:** *[Insert your Azure admin username here]*
+* **SSH Remote User:** *ironforge.website
+*
 
 ---
 
