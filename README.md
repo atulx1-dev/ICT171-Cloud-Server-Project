@@ -188,30 +188,10 @@ If you have a domain:
 
 ---
 
-### 📸 Screenshots
 
-No terminal screenshots needed — everything below comes from either the **Azure Portal** or your **browser** viewing the live site. Save images into a `screenshots/` folder next to this README, then reference them like this:
-
-```markdown
-![Azure VM Overview](screenshots/vm-overview.png)
 ```
 
-Here's what to capture and where it comes from:
-
-| # | Screenshot | Where to get it | Suggested placement |
-|---|---|---|---|
-| 1 | Azure VM Overview page (shows name, IP, region, size, OS, status) | Azure Portal → Virtual Machines → IronForge-VM → Overview tab | End of **Phase 1** |
-| 2 | Networking / NSG inbound rules (22, 80, 443 visible) | Azure Portal → your VM → Networking tab | End of **Phase 1** |
-| 3 | "Connect" blade showing SSH connection details | Azure Portal → your VM → Connect tab | **Phase 2** |
-| 4 | Run Command output showing nginx active (substitutes for a terminal screenshot) | Azure Portal → your VM → Operations → Run command → `RunShellScript` → run `systemctl status nginx` → screenshot the output panel | End of **Phase 3** |
-| 5 | Browser showing your live homepage | Browser at `http://74.162.66.196` | End of **Phase 4** |
-| 6 | Browser showing each inner page (equipment, membership, schedule, trainers, contact) | Browser, one screenshot per page | End of **Phase 4** |
-| 7 | DNS A record settings (only if you set up a domain) | Your domain registrar's DNS management panel | **Phase 5** |
-| 8 | Browser showing the padlock/HTTPS on your domain (only if applicable) | Browser address bar | End of **Phase 6** |
-
-**Tip on #4:** Azure's **Run command** feature (under your VM → Operations → Run command) lets you execute shell commands and see the output right inside the Azure Portal — no local terminal needed, and it still counts as solid proof the server's actually running nginx. Worth using for any "prove it's working" screenshot instead of SSHing in yourself.
-
-Crop screenshots to just the relevant panel (not your whole desktop) and keep filenames descriptive (`vm-overview.png`, not `Screenshot 2026-07-31.png`) so they're easy to drop into a Word doc or slides too if your assignment needs those.
+ose.
 
 ---
 
