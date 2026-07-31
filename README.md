@@ -17,11 +17,27 @@
 📖 Step-by-Step Cloud Deployment & Implementation Guide
 
 This guide is designed to take you from a local application to a fully live, secure cloud-hosted web server on Microsoft Azure. Whether you are deploying an API, a portfolio site, or a custom cybersecurity tool like BreachPoint, these foundational steps apply to almost any web technology stack.
+
+
 📋 Prerequisites
 
 Before you begin, ensure you have the following ready:
 
-    A Cloud Account: An active Microsoft Azure account (such as a Free Tier or Student Account).
-    Local Terminal: A terminal or command-line interface (Terminal on macOS/Linux, or PowerShell/Git Bash on Windows).
-    Application Code: A web application code structure ready in a local folder or pushed to a GitHub repository.
-    Basic CLI Comfort: Familiarity with running basic commands (navigating directories, connecting to remote systems).
+A Cloud Account: An active Microsoft Azure account (such as a Free Tier or Student Account).
+Local Terminal: A terminal or command-line interface (Terminal on macOS/Linux, or PowerShell/Git Bash on Windows).
+Application Code: A web application code structure ready in a local folder or pushed to a GitHub repository.
+Basic CLI Comfort: Familiarity with running basic commands (navigating directories, connecting to remote systems).
+
+Complete Guide: Deploying a Production-Ready WordPress Site on AWS EC2 (Ubuntu 24.04 LTS)
+📌 Document Overview
+
+This guide covers the end-to-end setup of a high-performance, secure WordPress web application hosted on Amazon Web Services (AWS) using an Ubuntu Linux instance, Apache web server, MySQL database, and PHP engine (LAMP stack).
+🛠️ System Architecture & Prerequisites
+
+Before starting, ensure you have:
+
+    An active AWS Account.
+
+    A registered Domain Name (from Namecheap, Cloudflare, GoDaddy, or AWS Route 53).
+
+    An SSH client (Terminal on Mac/Linux, or PowerShell/PuTTY on Windows).
