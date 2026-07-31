@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Forge Gym | Built for Greatness</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; scroll-behavior: smooth; }
+        body { background-color: #0f0f11; color: #f5f5f5; line-height: 1.6; }
+
+        nav { background: #18181c; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e50914; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: 2px; display: flex; align-items: center; gap: 8px; }
+        .logo span { color: #e50914; }
+        .nav-links { list-style: none; display: flex; gap: 20px; align-items: center; }
+        .nav-links a { color: #ccc; text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: #e50914; }
+
+        .cart-btn-nav { background: #222; border: 1px solid #e50914; color: #fff; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; position: relative; }
+        .cart-btn-nav:hover { background: #e50914; }
+        .cart-badge { background: #e50914; color: white; border-radius: 50%; padding: 2px 7px; font-size: 0.8rem; margin-left: 5px; }
+
+        /* Embedded Visual Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1400&q=80") center/cover;
+            height: 48vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+        .hero p { font-size: 1.15rem; color: #ddd; max-width: 650px; margin-bottom: 20px; }
+
+        .student-banner { max-width: 1100px; margin: 25px auto 0; padding: 12px 20px; background: #1a1a20; border-left: 5px solid #e50914; border-radius: 6px; }
+        .student-banner h4 { color: #fff; margin-bottom: 3px; }
+        .student-banner p { color: #aaa; font-size: 0.88rem; }
+
+        .btn { background: #e50914; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s; border: none; cursor: pointer; display: inline-block; width: 100%; text-align: center; }
+        .btn:hover { background: #b20710; transform: translateY(-2px); }
+
+        .section { max-width: 1100px; margin: 45px auto; padding: 0 20px; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; color: #fff; border-bottom: 2px solid #e50914; padding-bottom: 8px; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: #18181c; border-radius: 8px; padding: 25px; border: 1px solid #2a2a30; transition: 0.3s; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-5px); border-color: #e50914; box-shadow: 0 5px 20px rgba(229, 9, 20, 0.2); }
+        .card h3 { color: #e50914; margin-bottom: 12px; font-size: 1.3rem; }
+        .card p { color: #aaa; margin-bottom: 15px; font-size: 0.95rem; }
+        .price { font-size: 2rem; font-weight: bold; color: #fff; margin-bottom: 15px; }
+
+        /* Embedded Trainer Visual Cards */
+        .trainer-card { background: #18181c; border-radius: 10px; overflow: hidden; border: 1px solid #2a2a30; transition: 0.3s; text-align: center; }
+        .trainer-card:hover { transform: translateY(-5px); border-color: #e50914; box-shadow: 0 5px 20px rgba(229, 9, 20, 0.2); }
+        .trainer-img { width: 100%; height: 260px; object-fit: cover; border-bottom: 2px solid #e50914; }
+        .trainer-info { padding: 20px; }
+        .trainer-name { font-size: 1.3rem; color: #fff; font-weight: bold; margin-bottom: 4px; }
+        .trainer-role { color: #e50914; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+        .trainer-bio { color: #aaa; font-size: 0.9rem; margin-bottom: 15px; }
+
+        /* Transformations & Reviews Styles */
+        .transform-card { background: #18181c; border-radius: 8px; padding: 20px; border: 1px solid #2a2a30; text-align: left; }
+        .transform-card h4 { color: #fff; font-size: 1.2rem; margin-bottom: 5px; }
+        .badge-stat { display: inline-block; background: #e50914; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-bottom: 12px; }
+        .transform-quote { font-style: italic; color: #ccc; font-size: 0.92rem; margin-top: 8px; }
+
+        .review-card { background: #18181c; border-radius: 8px; padding: 20px; border: 1px solid #2a2a30; text-align: left; }
+        .stars { color: #ffb400; font-size: 1.1rem; margin-bottom: 8px; }
+        .reviewer-name { color: #fff; font-weight: bold; font-size: 1rem; margin-bottom: 2px; }
+        .reviewer-tag { color: #888; font-size: 0.8rem; margin-bottom: 10px; }
+
+        /* Modals */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-box { background: #1c1c22; padding: 30px; border-radius: 10px; border: 2px solid #e50914; max-width: 480px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 0 30px rgba(229, 9, 20, 0.3); }
+        .close-btn { position: absolute; top: 10px; right: 15px; color: #888; font-size: 28px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: #e50914; }
+
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; color: #ccc; font-size: 0.9rem; }
+        .form-group input { width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #333; background: #111; color: #fff; }
+
+        /* Cart & Receipt Styles */
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #333; }
+        .cart-item-title { font-weight: bold; color: #fff; }
+        .cart-item-price { color: #e50914; font-weight: bold; }
+        .remove-item { color: #ff4d4d; cursor: pointer; font-size: 0.85rem; margin-left: 10px; text-decoration: underline; }
+
+        .receipt-card { background: #111; padding: 20px; border-radius: 8px; border: 1px dashed #e50914; text-align: left; margin-top: 15px; }
+        .receipt-header { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 10px; }
+        .receipt-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
+
+        footer { background: #111; text-align: center; padding: 25px; margin-top: 50px; color: #666; border-top: 1px solid #222; }
+        footer a { color: #e50914; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🏋️‍♂️ IRON <span>FORGE</span></div>
+        <ul class="nav-links">
+            <li><a href="#trainers">Trainers</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#journeys">Journeys</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><button class="cart-btn-nav" onclick="toggleCartModal()">🛒 Cart <span class="cart-badge" id="cartCount">0</span></button></li>
+            <li><a href="/status.json" target="_blank">Status JSON</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Forge Your Legacy</h1>
+        <p>Premium strength training, high-intensity conditioning, and elite coaching built for real athletic performance.</p>
+    </div>
+
+    <div class="student-banner">
+        <h4>Academic Server Verification</h4>
+        <p><strong>Unit:</strong> ICT171 Cloud Server Project | <strong>Student:</strong> Atul | <strong>ID:</strong> 36190674 | <strong>IaaS VM:</strong> Azure Ubuntu</p>
+    </div>
+
+    <!-- Trainers Section with Direct Visual Image URLs -->
+    <div class="section" id="trainers">
+        <h2 class="section-title">Elite Coaching Staff</h2>
+        <div class="grid">
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=600&q=80" class="trainer-img" alt="Viktor Vance">
+                <div class="trainer-info">
+                    <div class="trainer-name">Viktor Vance</div>
+                    <div class="trainer-role">Head Strength & Power Coach</div>
+                    <p class="trainer-bio">Specializes in powerlifting mechanics, hypertrophy, and maximum strength protocols.</p>
+                    <button class="btn" onclick="addToCart('Personal Coaching with Viktor Vance', 90)">Book Session ($90)</button>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=600&q=80" class="trainer-img" alt="Elena Rostova">
+                <div class="trainer-info">
+                    <div class="trainer-name">Elena Rostova</div>
+                    <div class="trainer-role">HIIT & Athletic Conditioning</div>
+                    <p class="trainer-bio">Focuses on cardiovascular endurance, athletic mobility, and fat-loss conditioning.</p>
+                    <button class="btn" onclick="addToCart('Personal Coaching with Elena Rostova', 85)">Book Session ($85)</button>
+                </div>
+            </div>
+            <div class="trainer-card">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" class="trainer-img" alt="Marcus Thorne">
+                <div class="trainer-info">
+                    <div class="trainer-name">Marcus Thorne</div>
+                    <div class="trainer-role">Bodybuilding & Dietetics Specialist</div>
+                    <p class="trainer-bio">Expert in contest prep, customized macro planning, and physique optimization.</p>
+                    <button class="btn" onclick="addToCart('Personal Coaching with Marcus Thorne', 95)">Book Session ($95)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Programs Section -->
+    <div class="section" id="programs">
+        <h2 class="section-title">Training Programs</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3>Strength & Power</h3>
+                    <p>Heavy lifting and powerbuilding routines engineered for maximum muscle gains.</p>
+                </div>
+                <button class="btn" onclick="addToCart('Strength & Power Program', 45)">Add to Cart ($45)</button>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>HIIT & Conditioning</h3>
+                    <p>High-intensity interval training designed to build cardiovascular endurance.</p>
+                </div>
+                <button class="btn" onclick="addToCart('HIIT & Conditioning Program', 35)">Add to Cart ($35)</button>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>1-on-1 VIP Coaching</h3>
+                    <p>Customized athletic coaching session tailored to individual fitness goals.</p>
+                </div>
+                <button class="btn" onclick="addToCart('1-on-1 Personal Coaching', 80)">Add to Cart ($80)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Membership Section -->
+    <div class="section" id="membership">
+        <h2 class="section-title">Membership Plans</h2>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3>Day Pass</h3>
+                    <div class="price">$15 <span style="font-size: 1rem; color: #777;">/ day</span></div>
+                    <p>Full access to all gym equipment for 24 hours.</p>
+                </div>
+                <button class="btn" onclick="addToCart('Day Pass Membership', 15)">Add to Cart ($15)</button>
+            </div>
+            <div class="card" style="border-color: #e50914;">
+                <div>
+                    <h3>Monthly Pro</h3>
+                    <div class="price">$60 <span style="font-size: 1rem; color: #777;">/ mo</span></div>
+                    <p>Unlimited gym access + locker room facilities.</p>
+                </div>
+                <button class="btn" onclick="addToCart('Monthly Pro Membership', 60)">Add to Cart ($60)</button>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>VIP Unlimited</h3>
+                    <div class="price">$100 <span style="font-size: 1rem; color: #777;">/ mo</span></div>
+                    <p>Unlimited access + personal trainer consultation.</p>
+                </div>
+                <button class="btn" onclick="addToCart('VIP Unlimited Membership', 100)">Add to Cart ($100)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fitness Journeys Section -->
+    <div class="section" id="journeys">
+        <h2 class="section-title">Member Transformations</h2>
+        <div class="grid">
+            <div class="transform-card">
+                <h4>Marcus Vance</h4>
+                <span class="badge-stat">-18kg Fat Loss in 6 Months</span>
+                <p class="transform-quote">"The Strength & Power program at Iron Forge completely reshaped my physique and athletic power. Top-tier facility with elite coaching support."</p>
+            </div>
+            <div class="transform-card">
+                <h4>Sarah Jenkins</h4>
+                <span class="badge-stat">+5kg Lean Muscle Gained</span>
+                <p class="transform-quote">"Joining the Monthly Pro plan was the best fitness decision I’ve made. The community vibe and equipment standard are unmatched."</p>
+            </div>
+            <div class="transform-card">
+                <h4>Rohan Sharma</h4>
+                <span class="badge-stat">Powerlifting Total: 420kg</span>
+                <p class="transform-quote">"I prepped for my powerlifting meet using Iron Forge's heavy platforms. The equipment quality and 24/7 access allowed me to hit new PRs."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+    <div class="section" id="reviews">
+        <h2 class="section-title">Verified Member Reviews</h2>
+        <div class="grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="reviewer-name">Alex Rivera</div>
+                <div class="reviewer-tag">VIP Unlimited Member</div>
+                <p style="color:#aaa; font-size:0.92rem;">"Super clean facility, high-end equipment, and no waiting around for racks. The server status API feature is pretty cool too!"</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="reviewer-name">David K.</div>
+                <div class="reviewer-tag">HIIT Program Participant</div>
+                <p style="color:#aaa; font-size:0.92rem;">"High energy conditioning classes that push you past your limits. Worth every penny of the monthly pass."</p>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <div class="reviewer-name">Elena Rostova</div>
+                <div class="reviewer-tag">Monthly Pro Member</div>
+                <p style="color:#aaa; font-size:0.92rem;">"Smooth online checkout and instant confirmation receipt. Iron Forge Gym sets a high bar for modern athletic spaces."</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping Cart Modal -->
+    <div id="cartModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+            <h2 style="color:#e50914; margin-bottom: 15px;">Your Shopping Cart</h2>
+            <div id="cartItemsContainer">
+                <p style="color:#aaa;">Your cart is currently empty.</p>
+            </div>
+            <div id="cartSummary" style="margin-top:20px; border-top:1px solid #333; padding-top:15px; display:none;">
+                <div class="receipt-row"><span>Subtotal:</span><span id="cartSubtotal">$0</span></div>
+                <div class="receipt-row" style="font-weight:bold; color:#e50914; font-size:1.2rem;"><span>Total:</span><span id="cartTotal">$0</span></div>
+                <button class="btn" style="margin-top:15px;" onclick="openCheckoutModal()">Proceed to Registration & Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeCheckoutModal()">&times;</span>
+            <h2 style="color:#e50914; margin-bottom: 10px;">Member Registration</h2>
+            <p style="color:#ccc; margin-bottom:20px; font-size:0.9rem;">Fill in your details to finalize your membership registration.</p>
+            <form onsubmit="processRegistration(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="memberName" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="memberEmail" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Membership Start Date</label>
+                    <input type="date" id="startDate" required>
+                </div>
+                <button type="submit" class="btn" style="margin-top: 10px;">Complete Order & Generate Receipt</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeReceiptModal()">&times;</span>
+            <h2 style="color:#28a745; margin-bottom: 5px;">🎉 Registration Successful!</h2>
+            <p style="color:#aaa; font-size:0.9rem;">Thank you for joining Iron Forge Gym.</p>
+
+            <div class="receipt-card">
+                <div class="receipt-header">
+                    <div class="receipt-row"><span><strong>Order ID:</strong></span><span id="recID" style="color:#e50914; font-weight:bold;">#IFG-0000</span></div>
+                    <div class="receipt-row"><span><strong>Member Name:</strong></span><span id="recName">---</span></div>
+                    <div class="receipt-row"><span><strong>Email:</strong></span><span id="recEmail">---</span></div>
+                    <div class="receipt-row"><span><strong>Start Date:</strong></span><span id="recDate">---</span></div>
+                </div>
+                <div id="recItems"></div>
+                <div class="receipt-row" style="border-top:1px solid #333; padding-top:8px; margin-top:8px; font-weight:bold; color:#e50914;">
+                    <span>Total Paid:</span><span id="recTotal">$0</span>
+                </div>
+            </div>
+
+            <button class="btn" style="margin-top:20px;" onclick="closeReceiptModal()">Done / Back to Home</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Live Server Endpoint: <a href="/status.json" target="_blank">System Status JSON</a></p>
+        <p>© 2026 Iron Forge Gym - Hosted on Microsoft Azure IaaS</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(title, price) {
+            cart.push({ title: title, price: price });
+            updateCartUI();
+            alert("🛒 " + title + " added to your cart!");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cartCount').innerText = cart.length;
+            const container = document.getElementById('cartItemsContainer');
+            const summary = document.getElementById('cartSummary');
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p style="color:#aaa;">Your cart is currently empty.</p>';
+                summary.style.display = 'none';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `
+                    <div class="cart-item">
+                        <div>
+                            <div class="cart-item-title">${item.title}</div>
+                            <span class="remove-item" onclick="removeFromCart(${index})">Remove</span>
+                        </div>
+                        <div class="cart-item-price">$${item.price}</div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            document.getElementById('cartSubtotal').innerText = '$' + total;
+            document.getElementById('cartTotal').innerText = '$' + total;
+            summary.style.display = 'block';
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cartModal');
+            modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function openCheckoutModal() {
+            toggleCartModal();
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receiptModal').style.display = 'none';
+        }
+
+        function processRegistration(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('memberName').value;
+            const email = document.getElementById('memberEmail').value;
+            const startDate = document.getElementById('startDate').value;
+
+            const orderId = '#IFG-' + Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('recID').innerText = orderId;
+            document.getElementById('recName').innerText = name;
+            document.getElementById('recEmail').innerText = email;
+            document.getElementById('recDate').innerText = startDate;
+
+            let itemsHtml = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                itemsHtml += `<div class="receipt-row"><span>${item.title}</span><span>$${item.price}</span></div>`;
+            });
+
+            document.getElementById('recItems').innerHTML = itemsHtml;
+            document.getElementById('recTotal').innerText = '$' + total;
+
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+
+            document.getElementById('receiptModal').style.display = 'flex';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
